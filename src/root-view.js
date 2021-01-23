@@ -14,7 +14,7 @@ const RootView = () => {
                 backgroundColor={"#000000"}
             />
             <Navbar
-                title="Todo App"
+                title="TODO"
                 addButtonVisible={addButtonVisible}
             />
             <View
@@ -30,8 +30,10 @@ const RootView = () => {
 
 const styles = StyleSheet.create({
     container: {
+        height: "100%",
         paddingHorizontal: 10,
-        paddingVertical: 10
+        paddingVertical: 15,
+        backgroundColor: "#f5f5f5"
     }
 });
 

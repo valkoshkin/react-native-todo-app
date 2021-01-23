@@ -25,7 +25,7 @@ const Navbar = (props) => {
                 {title}
             </Text>
             <Icon
-                name="check"
+                name="checkcircleo"
                 type="antdesign"
                 color={
                     addButtonVisible ? "#fff" : "#212121"
@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "white",
-        fontSize: 18
+        fontSize: 20,
+        fontWeight: "bold"
     },
     disabledButton: {
         backgroundColor: "#212121"

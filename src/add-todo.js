@@ -9,7 +9,7 @@ const AddTodo = (props) => {
             <TextInput
                 style={styles.input}
                 multiline={true}
-                placeholder={"Add Todo"}
+                placeholder={"Input Todo here..."}
                 onChangeText={(text) => {
                     setAddButtonVisible(
                         text !== ''
@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     input: {
-        fontSize: 18
+        fontSize: 18,
+        width: "100%"
     }
 });
 
