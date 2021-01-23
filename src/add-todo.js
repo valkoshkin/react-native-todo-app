@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {View, StyleSheet, TextInput} from "react-native";
 
 const AddTodo = (props) => {
-    const {setAddButtonVisible} = props;
+    const {buttonsVisibleRef, inputValue, setInputValue} = props;
 
     return (
         <View style={styles.block}>
@@ -11,10 +11,10 @@ const AddTodo = (props) => {
                 multiline={true}
                 placeholder={"Input Todo here..."}
                 onChangeText={(text) => {
-                    setAddButtonVisible(
-                        text !== ''
-                    );
+                    buttonsVisibleRef.current = text !== "";
+                    setInputValue(text);
                 }}
+                value={inputValue}
             />
         </View>
     );
@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         paddingHorizontal: 15,
         borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25
+        borderBottomRightRadius: 25,
+        marginBottom: 15
     },
     input: {
         fontSize: 18,

@@ -1,9 +1,20 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 import {View, Text, StyleSheet} from "react-native";
 import {Icon} from 'react-native-elements'
 
 const Navbar = (props) => {
-    const {title, addButtonVisible} = props;
+    const {
+        buttonsVisibleRef,
+        onSubmit,
+        inputValue,
+        setInputValue
+    } = props;
+
+    const okPressHandler = () => {
+        buttonsVisibleRef.current = false;
+        onSubmit(inputValue);
+        setInputValue("");
+    }
 
     return (
         <View style={styles.navbar}>
@@ -11,30 +22,29 @@ const Navbar = (props) => {
                 name="close"
                 type="antdesign"
                 color={
-                    addButtonVisible ? "#fff" : "#212121"
+                    buttonsVisibleRef.current ? "#fff" : "#000"
                 }
                 onPress={() => {
-                    console.log('Delete Todo');
+                    buttonsVisibleRef.current = false;
+                    setInputValue("");
                 }}
                 disabled={
-                    !addButtonVisible
+                    !buttonsVisibleRef.current
                 }
                 disabledStyle={styles.disabledButton}
             />
             <Text style={styles.text}>
-                {title}
+                TODO
             </Text>
             <Icon
                 name="checkcircleo"
                 type="antdesign"
                 color={
-                    addButtonVisible ? "#fff" : "#212121"
+                    buttonsVisibleRef.current ? "#fff" : "#000"
                 }
-                onPress={() => {
-                    console.log('Add Todo');
-                }}
+                onPress={okPressHandler}
                 disabled={
-                    !addButtonVisible
+                    !buttonsVisibleRef.current
                 }
                 disabledStyle={styles.disabledButton}
             />
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "flex-end",
         justifyContent: "space-between",
-        backgroundColor: '#212121',
+        backgroundColor: '#000',
         paddingBottom: 10,
         paddingHorizontal: 20
     },
@@ -58,7 +68,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     disabledButton: {
-        backgroundColor: "#212121"
+        backgroundColor: "#000"
     }
 });
 

@@ -1,11 +1,22 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {StyleSheet, Text, View} from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import {StatusBar} from 'expo-status-bar';
 import Navbar from "./navbar";
 import AddTodo from "./add-todo";
+import Todo from "./todo";
 
 const RootView = () => {
-    const [addButtonVisible, setAddButtonVisible] = useState(false);
+    const [todos, setTodos] = useState([]);
+    const [inputValue, setInputValue] = useState("");
+
+    const buttonsVisibleRef = useRef(false);
+
+    const addTodo = (title) => {
+        setTodos((prevTodos) => [{
+            id: Date.now().toString(),
+            title
+        }, ...prevTodos])
+    }
 
     return (
         <View>
@@ -14,15 +25,24 @@ const RootView = () => {
                 backgroundColor={"#000000"}
             />
             <Navbar
-                title="TODO"
-                addButtonVisible={addButtonVisible}
+                buttonsVisibleRef={buttonsVisibleRef}
+                onSubmit={addTodo}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
             />
-            <View
-                style={styles.container}
-            >
+            <View style={styles.container}>
                 <AddTodo
-                    setAddButtonVisible={setAddButtonVisible}
+                    buttonsVisibleRef={buttonsVisibleRef}
+                    inputValue={inputValue}
+                    setInputValue={setInputValue}
                 />
+                <View>
+                    {
+                        todos.map((todo) => {
+                            return <Todo todo={todo} key={todo.id}/>
+                        })
+                    }
+                </View>
             </View>
         </View>
     );
