@@ -4,10 +4,11 @@ import {View, Text, StyleSheet} from "react-native";
 const Todo = (props) => {
     const {todo} = props;
 
-    return(
+    return (
         <View style={styles.todo}>
-            <Text>{todo.title}</Text>
+            <Text style={styles.text}>{todo.title}</Text>
         </View>
+
     )
 }
 
@@ -18,6 +19,9 @@ const styles = StyleSheet.create({
         padding: 15,
         backgroundColor: "#fff",
         marginBottom: 1
+    },
+    text: {
+        fontSize: 18
     }
 })
 

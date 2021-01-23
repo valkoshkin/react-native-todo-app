@@ -36,10 +36,8 @@ const styles = StyleSheet.create({
         elevation: 7,
         backgroundColor: "white",
         paddingTop: 15,
-        paddingBottom: 20,
+        paddingBottom: 15,
         paddingHorizontal: 15,
-        borderBottomLeftRadius: 25,
-        borderBottomRightRadius: 25,
         marginBottom: 15
     },
     input: {

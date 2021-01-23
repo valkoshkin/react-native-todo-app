@@ -1,5 +1,5 @@
 import React, {useRef, useState} from "react";
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import Navbar from "./navbar";
 import AddTodo from "./add-todo";
@@ -30,7 +30,7 @@ const RootView = () => {
                 inputValue={inputValue}
                 setInputValue={setInputValue}
             />
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <AddTodo
                     buttonsVisibleRef={buttonsVisibleRef}
                     inputValue={inputValue}
@@ -43,7 +43,7 @@ const RootView = () => {
                         })
                     }
                 </View>
-            </View>
+            </ScrollView>
         </View>
     );
 }
