@@ -36,9 +36,10 @@ const styles = StyleSheet.create({
         elevation: 7,
         backgroundColor: "white",
         paddingTop: 15,
-        paddingBottom: 15,
+        paddingBottom: 20,
         paddingHorizontal: 15,
-        borderRadius: 10
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25
     },
     input: {
         fontSize: 18,
