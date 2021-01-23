@@ -1,11 +1,21 @@
-import React from "react";
-import {View, StyleSheet, TextInput, Button} from "react-native";
+import React, {useState} from "react";
+import {View, StyleSheet, TextInput} from "react-native";
 
 const AddTodo = (props) => {
+    const {setAddButtonVisible} = props;
+
     return (
         <View style={styles.block}>
-            <TextInput style={styles.input} multiline={true} placeholder={"Add Todo"} />
-            <Button style={styles.button} color={"#212121"} title="Add" />
+            <TextInput
+                style={styles.input}
+                multiline={true}
+                placeholder={"Add Todo"}
+                onChangeText={(text) => {
+                    setAddButtonVisible(
+                        text !== ''
+                    );
+                }}
+            />
         </View>
     );
 };
@@ -31,11 +41,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     input: {
-        width: "80%",
         fontSize: 18
-    },
-    button: {
-        margin: 10
     }
 });
 
