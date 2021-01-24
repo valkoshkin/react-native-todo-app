@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import RootView from "./src/root-view";
 
 const App = () => {
-    return <RootView />
-}
+  return <RootView />;
+};
 
-export default App
+export default App;
